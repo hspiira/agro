@@ -19,7 +19,7 @@ export default function PartnerPage() {
   };
 
   return (
-    <div className="pt-16 pb-8">
+    <div className="pt-4 pb-8">
       <SubScreenHeader title="Partnership" />
 
       <div className="px-4 pt-4 mb-6">

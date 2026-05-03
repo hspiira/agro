@@ -42,38 +42,29 @@ export function MobileBottomNav() {
   return (
     <nav
       className="fixed bottom-0 inset-x-0 z-50 bg-[var(--m-nav-bg)] backdrop-blur-md border-t border-[var(--m-border)]"
-      style={{
-        paddingBottom: 'max(16px, env(safe-area-inset-bottom))',
-        height: 'calc(68px + max(0px, env(safe-area-inset-bottom) - 16px))',
-      }}
+      style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
     >
-      <div className="flex items-end justify-around h-full pb-3">
+      <div className="flex items-center justify-around h-16">
         {TABS.map((tab) => {
           const isActive = activeTab === tab.id;
           return (
             <Link
               key={tab.id}
               href={tab.href}
-              className="flex flex-col items-center gap-1 flex-1 py-2 transition-all duration-200"
+              className="flex flex-col items-center justify-center gap-1 flex-1 h-full transition-all duration-200"
             >
               <div className="relative">
                 <tab.Icon className="h-6 w-6" style={{ color: isActive ? 'var(--m-accent)' : 'var(--m-sub)' }} />
                 {tab.id === 'shop' && count > 0 && (
-                  <span className="absolute -top-2 -right-2 flex items-center justify-center w-5 h-5 rounded-full bg-[var(--m-accent)] text-[var(--m-btn-text)] text-xs font-bold">
+                  <span className="absolute -top-2 -right-2 flex items-center justify-center w-4 h-4 rounded-full bg-[var(--m-accent)] text-[var(--m-btn-text)] text-[10px] font-bold">
                     {count}
                   </span>
                 )}
               </div>
-              <span
-                className={`text-xs font-bold transition-colors ${
-                  isActive ? 'text-[var(--m-accent)]' : 'text-[var(--m-sub)]'
-                }`}
-              >
+              <span className={`text-[10px] font-semibold transition-colors ${isActive ? 'text-[var(--m-accent)]' : 'text-[var(--m-sub)]'}`}>
                 {tab.label}
               </span>
-              {isActive && (
-                <div className="h-0.5 w-6 rounded-full bg-[var(--m-accent)] mt-0.5" />
-              )}
+              <div className={`h-0.5 w-5 rounded-full transition-all duration-200 ${isActive ? 'bg-[var(--m-accent)]' : 'bg-transparent'}`} />
             </Link>
           );
         })}

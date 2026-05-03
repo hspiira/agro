@@ -14,21 +14,22 @@
   --muted: rgba(236, 245, 236, 0.5);
 
   /* Mobile forest theme tokens */
-  --m-bg: #070d07;
-  --m-s1: #0c170c;
-  --m-s2: #101e10;
-  --m-s3: #162616;
+  /* Mobile tokens — reference desktop tokens (single source of truth) */
+  --m-bg: var(--forest);
+  --m-s1: var(--forest-deep);
+  --m-s2: var(--surface);
+  --m-s3: var(--card);
   --m-border: rgba(255, 255, 255, 0.06);
   --m-border-hi: rgba(255, 255, 255, 0.12);
-  --m-text: #ecf5ec;
-  --m-muted: rgba(236, 245, 236, 0.5);
-  --m-sub: rgba(236, 245, 236, 0.28);
+  --m-text: var(--cream);
+  --m-muted: rgba(236, 245, 236, 0.55);
+  --m-sub: rgba(236, 245, 236, 0.52);
   --m-nav-bg: rgba(7, 13, 7, 0.94);
-  --m-accent: #a3e635;
-  --m-accent-dim: rgba(163, 230, 53, 0.094);
-  --m-accent-mid: rgba(163, 230, 53, 0.2);
-  --m-accent-hi: rgba(163, 230, 53, 0.333);
-  --m-btn-text: #070b0e;
+  --m-accent: var(--accent);
+  --m-accent-dim: rgba(163, 230, 53, 0.10);
+  --m-accent-mid: rgba(163, 230, 53, 0.20);
+  --m-accent-hi: rgba(163, 230, 53, 0.33);
+  --m-btn-text: var(--forest);
   --m-glass: rgba(12, 23, 12, 0.72);
 }
 
@@ -62,7 +63,7 @@
 
   --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-playfair), Georgia, serif;
-  --font-money: var(--font-money), 'Cormorant Garamond', Georgia, serif;
+  --font-money: var(--font-money), 'IBM Plex Mono', ui-monospace, monospace;
 }
 
 @keyframes slideUp {
@@ -87,6 +88,13 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Push mobile content below the device status bar */
+@media (max-width: 767px) {
+  .m-main {
+    padding-top: env(safe-area-inset-top);
+  }
 }
 
 ::-webkit-scrollbar {

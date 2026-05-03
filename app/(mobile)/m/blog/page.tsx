@@ -6,7 +6,7 @@ import { blogPosts } from '@/lib/data';
 
 export default function BlogPage() {
   return (
-    <div className="pt-16 pb-8">
+    <div className="pt-4 pb-8">
       <SubScreenHeader title="Insights" />
 
       <div className="px-4 pt-4 space-y-4">

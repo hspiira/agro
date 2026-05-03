@@ -30,7 +30,7 @@ const videos = [
 
 export default function VideoPage() {
   return (
-    <div className="pt-16 pb-8">
+    <div className="pt-4 pb-8">
       <SubScreenHeader title="Videos" />
 
       <div className="px-4 space-y-4">

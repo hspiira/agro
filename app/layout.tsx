@@ -25,7 +25,6 @@ export const metadata: Metadata = {
   title: "Alm Agros",
   description: "Farm fresh coffee, bananas, and premium cattle from Mubende, Uganda.",
   manifest: "/manifest.json",
-  themeColor: "#070d07",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
@@ -39,6 +38,7 @@ export const viewport: Viewport = {
   viewportFit: "cover",
   minimumScale: 1,
   maximumScale: 5,
+  themeColor: "#070d07",
 };
 
 export default function RootLayout({

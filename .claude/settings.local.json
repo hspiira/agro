@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(pnpm run *)"
+      "Bash(pnpm run *)",
+      "WebFetch(domain:ezyagric.com)",
+      "WebFetch(domain:agnimble.com)",
+      "WebFetch(domain:www.trophydevelopers.com)",
+      "Bash(npm run *)"
     ]
   }
 }

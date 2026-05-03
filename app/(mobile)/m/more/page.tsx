@@ -18,7 +18,7 @@ function TestimonialCarousel() {
   const testimonial = testimonials[current];
 
   return (
-    <div className="px-4 mb-8">
+    <div className="px-4 pb-8">
       <SectionLabel>Testimonials</SectionLabel>
       <div className="mt-4 bg-[var(--m-s1)] border border-[var(--m-border)] rounded-xl p-6">
         <div className="text-4xl text-[var(--m-accent-dim)] mb-4">"</div>
@@ -62,7 +62,7 @@ export default function MorePage() {
 
       <TestimonialCarousel />
 
-      <div className="px-4 mb-8">
+      <div className="px-4 pb-8">
         <SectionLabel>Contact</SectionLabel>
         <div className="mt-4 space-y-3">
           {contactDetails.map((detail, idx) => (
