@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Playfair_Display, Cormorant_Garamond } from "next/font/google";
+import { DM_Sans, Playfair_Display, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -14,11 +14,11 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
-const cormorant = Cormorant_Garamond({
+const ibmMono = IBM_Plex_Mono({
   subsets: ["latin"],
   variable: "--font-money",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -51,7 +51,7 @@ export default function RootLayout({
       <head>
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
-      <body className={`${dmSans.variable} ${playfair.variable} ${cormorant.variable} font-sans antialiased`}>
+      <body className={`${dmSans.variable} ${playfair.variable} ${ibmMono.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>

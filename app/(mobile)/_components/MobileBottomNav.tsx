@@ -9,7 +9,7 @@ interface Tab {
   id: string;
   label: string;
   href: string;
-  Icon: React.FC<{className?: string}>;
+  Icon: React.FC<{className?: string; style?: React.CSSProperties}>;
 }
 
 const TABS: Tab[] = [
@@ -20,9 +20,9 @@ const TABS: Tab[] = [
   { id: 'more', label: 'More', href: '/m/more', Icon: MoreIcon },
 ];
 
-function MoreIcon({ className }: { className?: string }) {
+function MoreIcon({ className, style }: { className?: string; style?: React.CSSProperties }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className={className} aria-hidden>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className={className} style={style} aria-hidden>
       <circle cx={12} cy={5} r={1} fill="currentColor" />
       <circle cx={12} cy={12} r={1} fill="currentColor" />
       <circle cx={12} cy={19} r={1} fill="currentColor" />

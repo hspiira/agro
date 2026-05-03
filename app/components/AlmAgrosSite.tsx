@@ -342,9 +342,9 @@ function VideoSection() {
         </button>
         <div className="mx-auto mt-12 grid max-w-4xl gap-5 md:grid-cols-3">
           {[
-            [IconSunrise, "Sunrise to Harvest", "Follow our farmers from dawn through the full daily harvest cycle."],
-            [IconCoffee, "Coffee Processing", "From cherry to cup through artisan wet and dry processing methods."],
-            [IconCow, "Cattle Life", "Pasture management, feeding routines, and animal welfare practices."],
+            [IconSunrise, "Sunrise to Harvest", "Follow our farmers from dawn through the full daily harvest cycle."] as const,
+            [IconCoffee, "Coffee Processing", "From cherry to cup through artisan wet and dry processing methods."] as const,
+            [IconCow, "Cattle Life", "Pasture management, feeding routines, and animal welfare practices."] as const,
           ].map(([Icon, title, body]) => (
             <div key={title} className="rounded-xl border border-white/10 bg-surface p-6 text-center">
               <div className="mb-3"><Icon className="mx-auto h-9 w-9 text-cream" /></div>
@@ -565,8 +565,8 @@ function OrderContact() {
           <h2 className="mb-8 font-serif text-4xl font-bold tracking-tight md:text-5xl">Place an Order</h2>
           <div className="mb-8 grid grid-cols-2 gap-1 rounded-xl border border-white/10 bg-surface p-1">
             {[
-              ["order", IconPackage, "Single Order"],
-              ["wholesale", IconBuilding, "Wholesale"],
+              ["order", IconPackage, "Single Order"] as const,
+              ["wholesale", IconBuilding, "Wholesale"] as const,
             ].map(([id, Icon, label]) => (
               <button
                 key={id}
