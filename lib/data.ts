@@ -1,151 +1,171 @@
 /**
- * Site content. Edit here to change copy, links, and image URLs.
+ * Alm Agros site content. Edit these typed collections to update copy, links,
+ * images, products, and farm contact details without touching layout code.
  */
 
 export const site = {
-  name: "Heritage Grove",
+  name: "Alm Agros",
+  location: "Mubende, Uganda",
+  tagline: "From the Heart of Uganda, To Your Table",
+  founded: "2012",
+  email: "hello@almagros.ug",
+  phone: "+256 700 000 000",
+  alternatePhone: "+256 772 000 000",
 } as const;
 
-export const header = {
-  phone: "+1 800-123-2474",
-  email: "support@heritagegrove.com",
-  links: [
-    { href: "#", label: "Home" },
-    { href: "#marketplace", label: "Marketplace" },
-    { href: "#blog", label: "Blog" },
-    { href: "#community", label: "Community" },
-  ],
-  signUp: { href: "#", label: "Sign Up" },
-  login: { href: "#", label: "Login" },
+export const navLinks = [
+  { href: "#about", label: "About" },
+  { href: "#activities", label: "Activities" },
+  { href: "#products", label: "Products" },
+  { href: "#blog", label: "Blog" },
+  { href: "#partnership", label: "Partnership" },
+  { href: "#contact", label: "Contact" },
+] as const;
+
+export const images = {
+  hero: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1800&q=85&fit=crop",
+  about: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=900&q=80&fit=crop",
+  coffee: "https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=800&q=80&fit=crop",
+  banana: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=800&q=80&fit=crop",
+  cattle: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=800&q=80&fit=crop",
+  farm1: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80&fit=crop",
+  farm2: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=800&q=80&fit=crop",
+  farm3: "https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800&q=80&fit=crop",
+  farm4: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=800&q=80&fit=crop",
+  blog1: "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?w=600&q=80&fit=crop",
+  blog2: "https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0?w=600&q=80&fit=crop",
+  partner: "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=900&q=80&fit=crop",
 } as const;
 
-export const hero = {
-  tagline: "Sustainable Farming",
-  title: "Bringing innovation to your farming journey.",
-  body: "From precision agriculture to sustainable practices, we help you grow more efficiently and profitably. Coffee, bananas, livestock, beans, and Irish potatoes — join us in transforming the way you farm.",
-  ctaLabel: "Get Started",
-  image: {
-    src: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80",
-    alt: "Farmer in field",
+export const heroStats = [
+  { value: "500+", label: "Acres of Farmland" },
+  { value: "12+", label: "Years of Farming" },
+  { value: "3,000+", label: "Families Served" },
+  { value: "100%", label: "Organic Practices" },
+] as const;
+
+export const farmValues = [
+  { icon: "Organic", title: "Organic First", body: "No harmful chemicals. We protect the soil that feeds every harvest." },
+  { icon: "People", title: "Community Rooted", body: "Employing and buying from local families across Mubende District." },
+  { icon: "Land", title: "Sustainable Land", body: "Composting, pasture cycles, and careful water use guide our work." },
+  { icon: "Direct", title: "Direct to You", body: "Farm-to-table supply for households, cafes, hotels, and partners." },
+] as const;
+
+export const activities = [
+  {
+    image: images.farm1,
+    label: "Coffee Harvesting",
+    body: "Handpicked at peak ripeness",
+    tag: "Annual",
+    featured: true,
   },
-  mission: {
-    title: "Our Mission",
-    body: "To empower farmers with innovative tools and practices that enhance productivity, sustainability, and efficiency — from coffee to cattle — shaping the future of farming.",
-    linkLabel: "Learn More",
-    href: "#about",
+  { image: images.cattle, label: "Cattle Grazing", body: "Pasture-raised, grass-fed", tag: "Year-round" },
+  { image: images.farm3, label: "Banana Plantation", body: "East African highland variety" },
+  { image: images.farm4, label: "Soil Preparation", body: "Natural composting cycles" },
+  { image: images.farm2, label: "Processing & Drying", body: "Sun-dried coffee beans" },
+] as const;
+
+export const products = [
+  {
+    image: images.coffee,
+    name: "Arabica Coffee Beans",
+    body: "Sun-dried, single origin",
+    price: "UGX 45,000",
+    unit: "/kg",
+    badge: "Best Seller",
+    tone: "accent",
   },
-} as const;
-
-export const about = {
-  tabs: [
-    { id: "about", label: "About Us" },
-    { id: "journey", label: "Journey" },
-    { id: "vision", label: "Vision" },
-    { id: "mission", label: "Mission" },
-  ],
-  activeTabId: "about",
-  whoWeAre: {
-    subheading: "Who we are at Heritage Grove",
-    title: "With years of expertise in both farming and tech, we're committed to helping farmers grow smarter and achieve better yields. Together, we're shaping the future of farming for a more sustainable world.",
-    body: "By combining innovation with sustainability, we empower farmers to increase productivity, reduce waste, and contribute to a healthier planet. From coffee and bananas to sheep, cattle, goats, and Irish potatoes — we're here for the long haul.",
-    ctaLabel: "Learn More",
-    ctaHref: "#",
+  {
+    image: images.banana,
+    name: "East African Bananas",
+    body: "Matooke and sweet varieties",
+    price: "UGX 12,000",
+    unit: "/bunch",
+    badge: "Fresh",
+    tone: "green",
   },
-  featureCards: [
-    {
-      id: "image-1",
-      img: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&q=80",
-      imgAlt: "Farming",
-      highlight: false,
-    },
-    {
-      id: "years",
-      stat: "10+",
-      subtitle: "Years of Agricultural Innovation",
-      desc: "With a decade of experience, we've pioneered advancements in precision agriculture, helping farmers increase yields while reducing resource use.",
-      highlight: false,
-    },
-    {
-      id: "image-2",
-      img: "https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?w=600&q=80",
-      imgAlt: "Fresh produce",
-      highlight: false,
-    },
-    {
-      id: "satisfaction",
-      stat: "85%",
-      subtitle: "Customer Satisfaction Rate",
-      desc: "Our users trust us to deliver valuable tools and support that enable them to work smarter and grow better.",
-      highlight: true,
-    },
-  ],
-} as const;
+  {
+    image: images.cattle,
+    name: "Premium Beef Cuts",
+    body: "Grass-fed, free-range",
+    price: "UGX 28,000",
+    unit: "/kg",
+    badge: "Order Ahead",
+    tone: "muted",
+  },
+  {
+    image: images.coffee,
+    name: "Dark Roast Coffee",
+    body: "Medium roast, ground",
+    price: "UGX 55,000",
+    unit: "/500g",
+    badge: "New",
+    tone: "green",
+  },
+] as const;
 
-export const statsStrip = {
-  items: [
-    { value: "10+", label: "Years of farming" },
-    { value: "85%", label: "Customer satisfaction" },
-    { value: "500+", label: "Farms we work with" },
-    { value: "Fresh", label: "Daily harvest" },
-  ],
-} as const;
+export const blogPosts = [
+  {
+    image: images.blog1,
+    category: "Coffee Farming",
+    title: "Best Practices for Coffee Harvesting in Uganda",
+    date: "Mar 2026",
+    readTime: "5 min read",
+  },
+  {
+    image: images.blog2,
+    category: "Animal Care",
+    title: "Rotational Grazing for Healthier Cattle and Soil",
+    date: "Feb 2026",
+    readTime: "7 min read",
+  },
+  {
+    image: images.about,
+    category: "Crop Management",
+    title: "Banana Bunch Management for Maximum Yield",
+    date: "Jan 2026",
+    readTime: "4 min read",
+  },
+] as const;
 
-export const whyChooseUs = {
-  title: "Why Heritage Grove",
-  subtitle: "Empowering sustainable agriculture.",
-  body: "We support farmers and communities with quality produce and livestock, from coffee and bananas to sheep, cattle, goats, and Irish potatoes.",
-  bullets: [
-    "Sustainable farming practices",
-    "Quality produce & livestock",
-    "Expert support & delivery",
-    "Rooted in community",
-  ],
-} as const;
+export const partnershipTypes = [
+  "Wholesale Buyer",
+  "NGO/Government",
+  "Investor",
+  "Co-op Partner",
+  "Restaurant/Hotel",
+] as const;
 
-export const stayConnected = {
-  title: "Stay connected",
-  subtitle: "Events and updates from the farm.",
-  cards: [
-    {
-      id: "workshop",
-      title: "Farm tour & tasting",
-      date: "Seasonal",
-      desc: "Visit the farm and taste our coffee, produce, and more.",
-      img: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&q=80",
-      imgAlt: "Farm visit",
-    },
-    {
-      id: "harvest",
-      title: "Harvest season updates",
-      date: "Monthly",
-      desc: "Availability for bananas, beans, potatoes, and livestock.",
-      img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&q=80",
-      imgAlt: "Harvest",
-    },
-    {
-      id: "community",
-      title: "Community markets",
-      date: "Weekly",
-      desc: "Find us at local markets with fresh produce and eggs.",
-      img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=80",
-      imgAlt: "Community",
-    },
-  ],
-} as const;
+export const testimonials = [
+  {
+    quote: "The coffee from Alm Agros is extraordinary: complex, earthy, and perfectly processed. Our cafe cannot source from anyone else.",
+    name: "Sarah Namukasa",
+    role: "Owner, Kampala Coffee House",
+    initials: "SN",
+  },
+  {
+    quote: "Partnering with this farm transformed the food supply chain for 12 schools in Mubende. Exceptional quality, every time.",
+    name: "Dr. James Ochieng",
+    role: "Food Security Director, USAID Uganda",
+    initials: "JO",
+  },
+  {
+    quote: "I placed a wholesale order for my supermarket chain and the bananas arrived perfectly ripened. Consistent quality, every single time.",
+    name: "Prosper Mugisha",
+    role: "Procurement Manager",
+    initials: "PM",
+  },
+] as const;
 
-export const footer = {
-  brandName: "Heritage Grove",
-  tagline: "Farm-fresh coffee, bananas, livestock, beans, and Irish potatoes for our community.",
-  columns: [
-    { title: "Produce", links: [{ href: "#", label: "Coffee" }, { href: "#", label: "Bananas" }, { href: "#", label: "Beans" }, { href: "#", label: "Irish potatoes" }] },
-    { title: "Livestock", links: [{ href: "#", label: "Sheep & cattle" }, { href: "#", label: "Goats & poultry" }, { href: "#", label: "Pigs & duck" }] },
-  ],
-  contactTitle: "Contact",
-  contactEmail: "support@heritagegrove.com",
-  contactPhone: "+1 800-123-2474",
-  newsletterTitle: "Stay informed",
-  newsletterPlaceholder: "Your email",
-  newsletterButton: "Subscribe",
-  bottomLinks: [{ href: "#", label: "Privacy" }, { href: "#", label: "Terms" }, { href: "#", label: "Contact" }],
-  copyright: "© Heritage Grove",
-} as const;
+export const contactDetails = [
+  { title: "Location", body: "Mubende District, Central Uganda\nNear Mubende Town Council" },
+  { title: "Phone / WhatsApp", body: "+256 700 000 000\n+256 772 000 000" },
+  { title: "Email", body: "hello@almagros.ug" },
+  { title: "Farm Hours", body: "Mon-Sat: 7:00am - 6:00pm" },
+] as const;
+
+export const footerColumns = [
+  { title: "Products", links: ["Coffee Beans", "Bananas", "Beef Cuts", "Roasted Coffee"] },
+  { title: "Company", links: ["About Us", "Farm Activities", "Blog", "Careers"] },
+  { title: "Connect", links: ["Partnership", "Orders", "WhatsApp Us", "Find Us"] },
+] as const;
