@@ -1,11 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { useCart } from '@/lib/cart';
 import { products } from '@/lib/data';
 import { SectionLabel } from '@/app/(mobile)/_components/SectionLabel';
 import { ProductCard } from '@/app/(mobile)/_components/ProductCard';
-import { CartSheet } from './CartSheet';
 
 type FilterCategory = 'All' | 'Coffee' | 'Bananas' | 'Beef';
 
@@ -21,9 +19,6 @@ function filterProducts(items: typeof products, filter: FilterCategory) {
 
 export default function ShopPage() {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>('All');
-  const [cartSheetOpen, setCartSheetOpen] = useState(false);
-  const { count } = useCart();
-
   const filtered = filterProducts(products, activeFilter);
 
   return (
@@ -56,17 +51,6 @@ export default function ShopPage() {
           ))}
         </div>
       </div>
-
-      {count > 0 && (
-        <button
-          onClick={() => setCartSheetOpen(true)}
-          className="fixed bottom-24 right-4 w-14 h-14 bg-[var(--m-accent)] text-[var(--m-btn-text)] rounded-full flex items-center justify-center font-bold text-lg shadow-lg active:opacity-80"
-        >
-          {count}
-        </button>
-      )}
-
-      <CartSheet open={cartSheetOpen} onOpenChange={setCartSheetOpen} />
     </div>
   );
 }
