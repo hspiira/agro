@@ -16,6 +16,23 @@ import {
   site,
   testimonials,
 } from "@/lib/data";
+import {
+  IconSprout,
+  IconLeaf,
+  IconHandshake,
+  IconSun,
+  IconPackage,
+  IconSunrise,
+  IconCoffee,
+  IconCow,
+  IconCart,
+  IconBuilding,
+  IconMapPin,
+  IconPhone,
+  IconMail,
+  IconClock,
+  IconCheck,
+} from "./Icons";
 
 const badgeTones = {
   accent: "bg-accent/15 text-accent",
@@ -161,7 +178,7 @@ function Hero() {
           <span className="h-2 w-2 rounded-full bg-accent" />
           {site.location}
         </div>
-        <h1 className="max-w-4xl font-serif text-5xl font-black leading-none text-white md:text-7xl lg:text-8xl">
+        <h1 className="max-w-4xl font-serif text-5xl font-black leading-none tracking-tight text-white md:text-7xl lg:text-8xl">
           Farm Fresh,
           <br />
           <em className="font-serif text-accent">Grown with</em>
@@ -187,8 +204,8 @@ function Hero() {
       <div className="absolute inset-x-0 bottom-0 z-10">
         <div className="mx-auto grid max-w-[1400px] grid-cols-2 gap-5 px-4 pb-8 md:grid-cols-4 md:gap-12 md:px-12 md:pb-12">
           {heroStats.map((stat) => (
-            <div key={stat.label} className="border-l-4 border-accent pl-4">
-              <div className="font-serif text-3xl font-bold leading-none text-white md:text-4xl">{stat.value}</div>
+            <div key={stat.label} className="border-l-[3px] border-accent pl-4">
+              <div className="font-money text-3xl font-semibold leading-none text-white md:text-4xl">{stat.value}</div>
               <div className="mt-2 text-xs font-medium text-white/55 md:text-sm">{stat.label}</div>
             </div>
           ))}
@@ -205,14 +222,14 @@ function About() {
         <div className="relative min-h-[460px] overflow-hidden rounded-2xl">
           <Image src={images.about} alt="Alm Agros cultivated field" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
           <div className="absolute bottom-6 right-4 rounded-xl bg-accent px-7 py-5 text-forest shadow-2xl md:-right-5">
-            <div className="text-3xl">Growing</div>
+            <IconSprout className="h-8 w-8" />
             <div className="mt-1 font-serif text-lg font-bold">Est. {site.founded}</div>
           </div>
         </div>
 
         <div className="self-center">
           <SectionLabel>Our Story</SectionLabel>
-          <h2 className="max-w-2xl font-serif text-4xl font-bold leading-tight text-cream md:text-5xl">
+          <h2 className="max-w-2xl font-serif text-4xl font-bold leading-tight tracking-tight text-cream md:text-5xl">
             Rooted in the
             <br />
             <em className="text-accent">Red Soils of Mubende</em>
@@ -224,15 +241,22 @@ function About() {
             We believe that great food starts with healthy land. Every acre we tend and every animal we raise reflects our commitment to quality, community, and the future of Ugandan agriculture.
           </p>
           <div className="mt-9 grid gap-4 sm:grid-cols-2">
-            {farmValues.map((value) => (
-              <div key={value.title} className="rounded-xl border border-white/10 bg-surface p-5">
-                <div className="mb-3 inline-flex rounded-md bg-accent/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-accent">
-                  {value.icon}
+            {farmValues.map((value) => {
+              const iconMap: Record<string, React.FC<{className?: string}>> = {
+                Organic: IconLeaf,
+                People: IconHandshake,
+                Land: IconSun,
+                Direct: IconPackage,
+              };
+              const Icon = iconMap[value.icon];
+              return (
+                <div key={value.title} className="rounded-xl border border-white/10 bg-surface p-5">
+                  {Icon ? <Icon className="mb-3 h-8 w-8 text-cream" /> : <div className="mb-3 text-3xl">{value.icon}</div>}
+                  <h3 className="font-bold text-cream">{value.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-cream/55">{value.body}</p>
                 </div>
-                <h3 className="font-bold text-cream">{value.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-cream/55">{value.body}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
@@ -247,7 +271,7 @@ function Activities() {
         <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
             <SectionLabel>Farm Life</SectionLabel>
-            <h2 className="font-serif text-4xl font-bold leading-tight md:text-5xl">
+            <h2 className="font-serif text-4xl font-bold leading-tight tracking-tight md:text-5xl">
               Activities &
               <br />
               Gallery
@@ -299,7 +323,7 @@ function VideoSection() {
     <section id="story" className="bg-forest px-4 py-20 text-cream md:px-12 md:py-28">
       <div className="mx-auto max-w-[1400px] text-center">
         <SectionLabel>Our Farm Story</SectionLabel>
-        <h2 className="font-serif text-4xl font-bold md:text-5xl">See How We Farm</h2>
+        <h2 className="font-serif text-4xl font-bold tracking-tight md:text-5xl">See How We Farm</h2>
         <button
           type="button"
           className="group relative mx-auto mt-12 block aspect-video w-full max-w-5xl overflow-hidden rounded-[20px] bg-black text-left"
@@ -318,11 +342,12 @@ function VideoSection() {
         </button>
         <div className="mx-auto mt-12 grid max-w-4xl gap-5 md:grid-cols-3">
           {[
-            ["Sunrise to Harvest", "Follow our farmers from dawn through the full daily harvest cycle."],
-            ["Coffee Processing", "From cherry to cup through artisan wet and dry processing methods."],
-            ["Cattle Life", "Pasture management, feeding routines, and animal welfare practices."],
-          ].map(([title, body]) => (
+            [IconSunrise, "Sunrise to Harvest", "Follow our farmers from dawn through the full daily harvest cycle."],
+            [IconCoffee, "Coffee Processing", "From cherry to cup through artisan wet and dry processing methods."],
+            [IconCow, "Cattle Life", "Pasture management, feeding routines, and animal welfare practices."],
+          ].map(([Icon, title, body]) => (
             <div key={title} className="rounded-xl border border-white/10 bg-surface p-6 text-center">
+              <div className="mb-3"><Icon className="mx-auto h-9 w-9 text-cream" /></div>
               <h3 className="font-bold text-cream">{title}</h3>
               <p className="mt-3 text-sm leading-6 text-cream/55">{body}</p>
             </div>
@@ -349,14 +374,17 @@ function Products() {
         <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
             <SectionLabel>What We Grow</SectionLabel>
-            <h2 className="font-serif text-4xl font-bold md:text-5xl">Product Catalog</h2>
+            <h2 className="font-serif text-4xl font-bold tracking-tight md:text-5xl">Product Catalog</h2>
           </div>
-          <div className="w-fit rounded-lg bg-accent px-5 py-3 text-sm font-bold text-forest">Cart ({cartCount})</div>
+          <div className="flex w-fit items-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm font-bold text-forest">
+            <IconCart className="h-5 w-5" />
+            Cart ({cartCount})
+          </div>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {products.map((product) => (
-            <article key={product.name} className="overflow-hidden rounded-2xl border border-white/10 bg-card transition-transform duration-200 hover:-translate-y-1">
+            <article key={product.name} className="overflow-hidden rounded-2xl border border-white/10 bg-card transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.18)]">
               <div className="relative h-56">
                 <Image src={product.image} alt={product.name} fill sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw" className="object-cover" />
               </div>
@@ -367,7 +395,7 @@ function Products() {
                 <h3 className="font-bold text-cream">{product.name}</h3>
                 <p className="mt-2 text-sm text-cream/55">{product.body}</p>
                 <div className="mt-5 flex items-baseline gap-1">
-                  <span className="font-serif text-2xl font-bold text-accent">{product.price}</span>
+                  <span className="font-money text-2xl font-semibold text-accent">{product.price}</span>
                   <span className="text-sm text-cream/45">{product.unit}</span>
                 </div>
                 <button
@@ -391,7 +419,7 @@ function Blog() {
     <section id="blog" className="bg-forest px-4 py-20 text-cream md:px-12 md:py-28">
       <div className="mx-auto max-w-[1400px]">
         <SectionLabel>Farming Knowledge</SectionLabel>
-        <h2 className="mb-12 font-serif text-4xl font-bold md:text-5xl">Advice & Insights</h2>
+        <h2 className="mb-12 font-serif text-4xl font-bold tracking-tight md:text-5xl">Advice & Insights</h2>
         <div className="grid gap-6 md:grid-cols-3">
           {blogPosts.map((post) => (
             <article key={post.title} className="overflow-hidden rounded-2xl border border-white/10 bg-card transition-transform duration-200 hover:-translate-y-1">
@@ -432,7 +460,7 @@ function Partnership() {
         </div>
         <div className="self-center">
           <SectionLabel>Work With Us</SectionLabel>
-          <h2 className="font-serif text-4xl font-bold leading-tight md:text-5xl">
+          <h2 className="font-serif text-4xl font-bold leading-tight tracking-tight md:text-5xl">
             Let&apos;s Grow
             <br />
             <em className="text-accent">Together</em>
@@ -464,6 +492,12 @@ function Partnership() {
               </button>
             </form>
           )}
+          {sent && (
+            <div className="mt-8 flex items-center justify-center gap-3 rounded-xl border border-leaf/40 bg-leaf/10 p-5 text-center font-bold text-leaf">
+              <IconCheck className="h-5 w-5 flex-shrink-0" />
+              Thank you. We'll be in touch within 48 hours.
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -488,10 +522,10 @@ function Testimonials() {
       <div className="absolute inset-0 bg-forest/80" />
       <div className="relative z-10 mx-auto max-w-4xl text-center">
         <SectionLabel>What People Say</SectionLabel>
-        <h2 className="mb-12 font-serif text-4xl font-bold text-white md:text-5xl">Trusted by Buyers Across East Africa</h2>
+        <h2 className="mb-12 font-serif text-4xl font-bold tracking-tight text-white md:text-5xl">Trusted by Buyers Across East Africa</h2>
         <div className="px-2">
           <div className="font-serif text-7xl leading-none text-accent">&quot;</div>
-          <p className="mx-auto max-w-3xl font-serif text-xl italic leading-9 text-white/90 md:text-2xl">{testimonial.quote}</p>
+          <p className="mx-auto max-w-3xl font-serif text-xl italic leading-9 text-white/90 md:text-2xl" style={{ marginBottom: "8px" }}>{testimonial.quote}</p>
           <div className="mx-auto mt-9 flex h-14 w-14 items-center justify-center rounded-full bg-accent font-bold text-forest">
             {testimonial.initials}
           </div>
@@ -528,24 +562,26 @@ function OrderContact() {
       <div className="mx-auto grid max-w-[1400px] gap-12 lg:grid-cols-2 lg:gap-20">
         <div>
           <SectionLabel>Get Started</SectionLabel>
-          <h2 className="mb-8 font-serif text-4xl font-bold md:text-5xl">Place an Order</h2>
+          <h2 className="mb-8 font-serif text-4xl font-bold tracking-tight md:text-5xl">Place an Order</h2>
           <div className="mb-8 grid grid-cols-2 gap-1 rounded-xl border border-white/10 bg-surface p-1">
             {[
-              ["order", "Single Order"],
-              ["wholesale", "Wholesale"],
-            ].map(([id, label]) => (
+              ["order", IconPackage, "Single Order"],
+              ["wholesale", IconBuilding, "Wholesale"],
+            ].map(([id, Icon, label]) => (
               <button
                 key={id}
                 type="button"
-                className={`rounded-lg px-4 py-3 text-sm font-bold transition-colors ${tab === id ? "bg-accent text-forest" : "text-cream/55 hover:text-cream"}`}
+                className={`flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-sm font-bold transition-colors ${tab === id ? "bg-accent text-forest" : "text-cream/55 hover:text-cream"}`}
                 onClick={() => setTab(id as "order" | "wholesale")}
               >
+                <Icon className="h-4 w-4" />
                 {label}
               </button>
             ))}
           </div>
           {sent ? (
-            <div className="rounded-xl border border-leaf/40 bg-leaf/10 p-5 text-center font-bold text-leaf">
+            <div className="flex items-center justify-center gap-3 rounded-xl border border-leaf/40 bg-leaf/10 p-5 text-center font-bold text-leaf">
+              <IconCheck className="h-5 w-5 flex-shrink-0" />
               Order received. We&apos;ll confirm via WhatsApp shortly.
             </div>
           ) : (
@@ -570,19 +606,28 @@ function OrderContact() {
         </div>
         <div>
           <SectionLabel>Find Us</SectionLabel>
-          <h2 className="mb-8 font-serif text-4xl font-bold md:text-5xl">Contact & Location</h2>
+          <h2 className="mb-8 font-serif text-4xl font-bold tracking-tight md:text-5xl">Contact & Location</h2>
           <div className="rounded-2xl border border-white/10 bg-surface p-7">
-            {contactDetails.map((detail) => (
-              <div key={detail.title} className="mb-7 flex gap-4 last:mb-0">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-xs font-bold uppercase text-accent">
-                  {detail.title.slice(0, 2)}
-                </div>
+            {contactDetails.map((detail) => {
+              const iconMap: Record<string, React.FC<{className?: string}>> = {
+                Location: IconMapPin,
+                "Phone / WhatsApp": IconPhone,
+                Email: IconMail,
+                "Farm Hours": IconClock,
+              };
+              const Icon = iconMap[detail.title];
+              return (
+                <div key={detail.title} className="mb-7 flex gap-4 last:mb-0">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent">
+                    {Icon && <Icon className="h-5 w-5" />}
+                  </div>
                 <div>
                   <h3 className="font-bold text-cream">{detail.title}</h3>
                   <p className="mt-1 whitespace-pre-line text-sm leading-6 text-cream/55">{detail.body}</p>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
           <a
             href="https://www.google.com/maps/search/?api=1&query=Mubende%2C%20Uganda"
@@ -590,9 +635,9 @@ function OrderContact() {
             rel="noreferrer"
             className="mt-6 flex min-h-56 flex-col items-center justify-center gap-3 rounded-xl border border-white/10 bg-surface text-center transition-colors hover:border-accent/50"
           >
-            <span className="text-sm font-bold uppercase tracking-[0.18em] text-accent">Map</span>
+            <span className="text-5xl">🗺️</span>
             <span className="font-mono text-xs text-cream/35">0.5893 N 31.3642 E - Mubende</span>
-            <span className="text-sm font-bold text-accent">Open in Google Maps</span>
+            <span className="text-sm font-bold text-accent">Open in Google Maps →</span>
           </a>
         </div>
       </div>

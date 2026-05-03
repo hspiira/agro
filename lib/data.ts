@@ -169,3 +169,17 @@ export const footerColumns = [
   { title: "Company", links: ["About Us", "Farm Activities", "Blog", "Careers"] },
   { title: "Connect", links: ["Partnership", "Orders", "WhatsApp Us", "Find Us"] },
 ] as const;
+
+export const galleryItems = [
+  { image: images.farm1, category: 'Farm' as const, alt: 'Coffee farm landscape' },
+  { image: images.coffee, category: 'Harvest' as const, alt: 'Coffee beans being harvested' },
+  { image: images.cattle, category: 'Cattle' as const, alt: 'Cattle grazing on pasture' },
+  { image: images.farm2, category: 'Processing' as const, alt: 'Sun-dried coffee beans' },
+  { image: images.banana, category: 'Harvest' as const, alt: 'Banana bunches on plantation' },
+  { image: images.farm3, category: 'Farm' as const, alt: 'Banana plantation rows' },
+  { image: images.farm4, category: 'Farm' as const, alt: 'Soil preparation for planting' },
+  { image: images.about, category: 'Farm' as const, alt: 'Cultivated field overview' },
+] as const;
+
+export type GalleryCategory = 'All' | 'Farm' | 'Harvest' | 'Cattle' | 'Processing';
+export const galleryCategories: GalleryCategory[] = ['All', 'Farm', 'Harvest', 'Cattle', 'Processing'];
